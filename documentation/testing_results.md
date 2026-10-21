@@ -24,7 +24,7 @@ container via `curl`. Hasilnya identik.
 
 ### 1. Pertanyaan kebijakan (RAG)
 
-```json
+```
 POST /ask  {"query": "Berapa jatah cuti tahunan karyawan tetap?"}
 → {"status": "success", "intent": "faq",
    "data": "Halo! Karyawan tetap mendapatkan jatah 12 hari cuti tahunan. Jatah ini dapat mulai diambil setelah Anda memiliki masa kerja minimal 3 bulan."}
@@ -35,7 +35,7 @@ Retrieval langsung kena entri yang tepat; jawaban LLM persis isi FAQ, tidak dita
 
 ### 2. Pertanyaan kebijakan dengan bahasa sendiri (RAG)
 
-```json
+```
 POST /ask  {"query": "gimana cara reset password VPN saya ya?"}
 → {"status": "success", "intent": "faq",
    "data": "Halo! Anda dapat melakukan reset password VPN secara mandiri melalui portal self-service IT. Jika akun Anda terkunci, silakan hubungi tim IT Support untuk mendapatkan bantuan lebih lanjut."}
@@ -47,7 +47,7 @@ menemukan entri yang benar — pencarian berbasis makna, bukan kata identik.
 
 ### 3. Cek status tiket yang ada di data (tool call)
 
-```json
+```
 POST /ask  {"query": "Cek status tiket TICKET-0002 dong"}
 → {"status": "success", "intent": "ticket_status",
    "data": "Tiket TICKET-0002 — Permintaan akses Google Analytics
@@ -62,7 +62,7 @@ skenario ini — murni lookup data).
 
 ### 4. Cek status tiket yang TIDAK ada di data (tool call)
 
-```json
+```
 POST /ask  {"query": "apa status tiket TICKET-0042 saya?"}
 → {"status": "success", "intent": "ticket_status",
    "data": "Tiket TICKET-0042 tidak ditemukan di dalam data tiket. Silakan periksa kembali nomor tiket Anda atau hubungi tim IT Helpdesk."}
@@ -75,7 +75,7 @@ tidak crash.
 
 ### 5. Query di luar cakupan knowledge base (RAG + deteksi ketidaktahuan)
 
-```json
+```
 POST /ask  {"query": "Berapa gaji karyawan di perusahaan ini?"}
 → {"status": "success", "intent": "faq",
    "data": "Mohon maaf, saya belum memiliki informasi mengenai besaran gaji karyawan. Silakan menghubungi tim IT Helpdesk untuk bantuan lebih lanjut terkait pertanyaan tersebut."}
@@ -90,7 +90,7 @@ dari Context" di prompt terbukti bekerja; tidak ada pengarangan angka gaji.
 
 Saat pengujian lokal, skenario 5 sempat kali pertama mengembalikan:
 
-```json
+```
 {"status": "error", "intent": "unknown",
    "data": "Layanan AI sedang tidak dapat memproses permintaan Anda (kesalahan konfigurasi API key atau gangguan dari LLM). Silakan coba lagi nanti."}
 ```
