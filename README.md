@@ -154,6 +154,9 @@ curl -X POST http://localhost:8000/ask \
   -d '{"query": "apa status tiket TICKET-0002 saya?"}'
 ```
 
+Catatan: file `.env` berisi API key tidak pernah di-commit — yang tersedia di
+repository hanya `.env.example` (lihat `.gitignore`).
+
 ## Hasil Pengujian (5 Skenario)
 
 Diuji terhadap server lokal **dan** container Docker (diakses dari luar container);
@@ -198,9 +201,3 @@ hasilnya identik — **5/5 query diarahkan ke komponen yang tepat**.
 - **Error handling LLM hanya teruji pada kondisi nyata satu kali** (503 sesaat);
   skenario API key kosong diuji lewat jalur lazy-client, bukan lewat container tanpa
   env file.
-
-## Pengumpulan
-
-Format repository sesuai brief: `assignment-helpdesk-agent-nama-peserta`.
-Seluruh output (source code, hasil pengujian, dokumentasi) berada di repository ini;
-file `.env` tidak di-commit (hanya `.env.example`).
